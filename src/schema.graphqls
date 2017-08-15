@@ -1,0 +1,16 @@
+type Food {
+  id: Int!
+  createdAt: String!
+  updatedAt: String!
+  name: String!
+  description: String!
+}
+
+type Query {
+  food(id: Int!): Food
+  allFoods: [Food]
+}
+
+#type Mutation {
+#
+#}
