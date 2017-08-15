@@ -7,10 +7,10 @@ type Food {
 }
 
 type Query {
-  food(id: Int!): Food
+  Food(id: Int!): Food
   allFoods: [Food]
 }
 
-#type Mutation {
-#
-#}
+type Mutation {
+  createFood(name: String!, description: String!): Food
+}

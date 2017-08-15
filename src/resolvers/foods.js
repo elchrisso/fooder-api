@@ -23,5 +23,17 @@ export default {
         throw err
       }
     }
+  },
+
+  Mutation: {
+    async createFood (_doc, args, _context, _info) {
+      try {
+        const food = await Food.create(args)
+        return food.get({ plain: true })
+      } catch (err) {
+        //logger.error(err)
+        throw err
+      }
+    }
   }
 }

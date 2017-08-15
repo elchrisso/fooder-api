@@ -6,9 +6,11 @@ import { makeExecutableSchema } from 'graphql-tools'
 
 import db from './db'
 import schemaDef from './schema.graphqls'
+import resolvers from './resolvers'
 
 const app = express()
 const schema = makeExecutableSchema({
+  resolvers,
   typeDefs: [schemaDef]
 })
 
