@@ -1,5 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express'
 import { makeExecutableSchema } from 'graphql-tools'
@@ -14,6 +15,7 @@ const schema = makeExecutableSchema({
   typeDefs: [schemaDef]
 })
 
+app.use(cors())
 app.use('/graphql', bodyParser.json(), graphqlExpress((req) => ({
   schema,
   context: { someFutureAuth: 'someFutureToken' }
