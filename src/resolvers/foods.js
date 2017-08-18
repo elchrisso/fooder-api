@@ -34,6 +34,16 @@ export default {
         //logger.error(err)
         throw err
       }
+    },
+
+    async updateFood (_doc, args, _contet, _info) {
+      try {
+        const food = await Food.update(args)
+        return food.get({ plain: true })
+      } catch (err) {
+        //logger.error(err)
+        throw err
+      }
     }
   }
 }

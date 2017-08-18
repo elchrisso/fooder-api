@@ -6,11 +6,23 @@ type Food {
   description: String!
 }
 
+type Recipe {
+  id: Int!
+  createdAt: String!
+  updateAt: String!
+  name: String!
+  description: String!
+  cookTime: Int!
+}
+
 type Query {
   Food(id: Int!): Food
   allFoods: [Food]
+  Recipe(id: Int!): Recipe
+  allRecipes: [Recipe]
 }
 
 type Mutation {
   createFood(name: String!, description: String!): Food
+  updateFood(id: String!, name: String, description: String): Food
 }
