@@ -1,4 +1,5 @@
 import Recipe from '../db/models/recipe'
+import Food from '../db/models/food'
 
 export default {
   Query: {
@@ -26,7 +27,21 @@ export default {
   Mutation: {
     async createRecipe (_doc, args, _context, _info) {
       try {
-        const recipe = await Recipe.create(args)
+        //promise together create recipe and get foods
+        const result = await Promise.all([
+          Recipe.create(args),
+          Food.findAll({
+            where: {
+              id: {
+                $in: args.foodIds
+              }
+            }
+          })
+        ])
+        //recipe.addfoods
+        const [recipe, foods] = result
+        const associate = recipe.addFoods(foods, { through: 'foods_recipes' })
+
         return recipe.get({ plain: true })
       } catch (err) {
         //logger.error(err)

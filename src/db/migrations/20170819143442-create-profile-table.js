@@ -38,9 +38,9 @@ module.exports = {
           indicesType: 'INDEX'
         })
         resolve()
-      }).catch(((err) => {
+      }).catch((err) => {
         reject(err)
-      }))
+      })
     })
   },
 

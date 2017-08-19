@@ -8,6 +8,7 @@ import { makeExecutableSchema } from 'graphql-tools'
 import db from './db'
 import schemaDef from './schema.graphqls'
 import resolvers from './resolvers'
+import './db/associations'
 
 const app = express()
 const schema = makeExecutableSchema({

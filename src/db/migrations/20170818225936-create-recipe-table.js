@@ -3,7 +3,7 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return new Promise((resolve, reject) => {
-      queryInterface.createTable('recipe', {
+      queryInterface.createTable('recipes', {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
@@ -21,7 +21,7 @@ module.exports = {
 
   down: function (queryInterface, Sequelize) {
     return new Promise((resolve, reject) => {
-      queryInterface.dropTable('recipe')
+      queryInterface.dropTable('recipes')
       resolve()
     })
   }
