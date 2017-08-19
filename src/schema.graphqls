@@ -24,5 +24,7 @@ type Query {
 
 type Mutation {
   createFood(name: String!, description: String!): Food
-  updateFood(id: String!, name: String, description: String): Food
+  updateFood(id: Int!, name: String, description: String): Food
+  createRecipe(name: String!, description: String!, cookTime: Int!): Recipe
+  updateRecipe(id: String!, name: String, description: String, cookTime: Int): Recipe
 }
