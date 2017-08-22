@@ -15,7 +15,7 @@ export default {
 
     async Recipe (_doc, args, _context, _info) {
       try {
-        const recipe = await Recipe.findById(args.id)
+        const recipe = await Recipe.findById(args.id, { include: [{model: Food, as: 'Foods', through: 'foods_recipes'}] })
         return recipe.get({ plain: true })
       } catch (err) {
         //logger.error(err)

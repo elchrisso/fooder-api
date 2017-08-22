@@ -13,6 +13,7 @@ type Recipe {
   name: String!
   description: String!
   cookTime: Int!
+  Foods: [Food]
 }
 
 type Query {
