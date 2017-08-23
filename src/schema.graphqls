@@ -4,6 +4,7 @@ type Food {
   updatedAt: String!
   name: String!
   description: String!
+  Recipes: [Recipe]
 }
 
 type Recipe {
