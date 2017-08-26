@@ -1,5 +1,7 @@
 import Food from './models/food'
 import Recipe from './models/recipe'
+import Profile from './models/profile'
+import User from './models/user'
 
 Food.belongsToMany(Recipe, {
   as: 'Recipes',
@@ -12,3 +14,5 @@ Recipe.belongsToMany(Food, {
   through: 'foods_recipes',
   foreignKey: 'recipeId'
 })
+
+Profile.belongsTo(User, { foreignKey: 'userId'})

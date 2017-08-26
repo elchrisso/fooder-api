@@ -14,7 +14,7 @@ export default db.define(
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
     email: {
-      allowNull:: false,
+      allowNull: false,
       type: DataTypes.STRING,
       validate: {
         isEmail: true
@@ -35,6 +35,7 @@ export default db.define(
     }
   },
   {
+    freezeTableName: true,
     hooks: {
       async beforeCreate (user, _options)
       {

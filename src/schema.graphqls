@@ -17,11 +17,35 @@ type Recipe {
   Foods: [Food!]!
 }
 
+type User {
+  id: Int!
+  createdAt: String!
+  updatedAt: String!
+  email: String!
+  profile: Profile
+}
+
+type Profile {
+  id: Int!
+  createdAt: String!
+  updatedAt: String!
+  fullName: String!
+  phoneNumber: String
+  fullAddress: String
+  userId: Int!
+}
+
 type Query {
   Food(id: Int!): Food
   allFoods: [Food]
   Recipe(id: Int!): Recipe
   allRecipes: [Recipe]
+
+  User(id: Int!): User
+  allUsers: [User]
+
+  Profile(id: Int!): Profile
+  allProfiles: [Profile]
 }
 
 type Mutation {
@@ -29,4 +53,8 @@ type Mutation {
   updateFood(id: Int!, name: String, description: String): Food
   createRecipe(name: String!, description: String!, cookTime: Int!, foodIds: [Int!]!): Recipe
   updateRecipe(id: String!, name: String, description: String, cookTime: Int): Recipe
+
+  createUser(email: String!, password: String!): User
+  updateUser(id: Int!, email: String, password: String): User
+  createProfile(fullName: String!, fullAddress: String, phoneNumber: String, userId: Int!): Profile
 }
