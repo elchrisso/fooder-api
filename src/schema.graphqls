@@ -25,6 +25,10 @@ type User {
   profile: Profile
 }
 
+type Token {
+  token: String
+}
+
 type Profile {
   id: Int!
   createdAt: String!
@@ -55,6 +59,8 @@ type Mutation {
   updateRecipe(id: String!, name: String, description: String, cookTime: Int): Recipe
 
   createUser(email: String!, password: String!): User
+  loginUser(email: String!, password: String!): Token
   updateUser(id: Int!, email: String, password: String): User
   createProfile(fullName: String!, fullAddress: String, phoneNumber: String, userId: Int!): Profile
+
 }

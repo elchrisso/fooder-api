@@ -25,6 +25,7 @@
     "graphql": "^0.10.5",
     "graphql-server-express": "^1.1.0",
     "graphql-tools": "^1.2.0",
+    "jsonwebtoken": "^7.4.3",
     "lodash": "^4.17.4",
     "password-hash": "^1.2.2",
     "pg": "^7.1.2",

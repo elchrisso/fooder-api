@@ -15,4 +15,4 @@ Recipe.belongsToMany(Food, {
   foreignKey: 'recipeId'
 })
 
-Profile.belongsTo(User, { foreignKey: 'userId'})
+//Profile.belongsTo(User, { foreignKey: 'userId'})
