@@ -47,6 +47,7 @@ type Query {
 
   User(id: Int!): User
   allUsers: [User]
+  loggedInUser: User
 
   Profile(id: Int!): Profile
   allProfiles: [Profile]

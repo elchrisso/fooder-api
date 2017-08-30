@@ -5,6 +5,7 @@ import hash from 'password-hash'
 import jwt from 'jsonwebtoken'
 
 import { salt } from '../../secrets'
+import { isLoggedIn } from '../../utils'
 
 export default {
   Query: {
@@ -24,6 +25,17 @@ export default {
       try {
         const user = await User.findById(args.id)
         return (user) ? user.get({ plain: true }) : null
+      } catch (err) {
+        //logger.error(err)
+        throw err
+      }
+    },
+
+    async loggedInUser (_doc, _args, context, _info) {
+      try {
+        const token = isLoggedIn(context.token)
+        const user = await User.findById(token.data.id)
+        return user.get({ plain: true })
       } catch (err) {
         //logger.error(err)
         throw err
