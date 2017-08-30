@@ -36,7 +36,7 @@ type Profile {
   fullName: String!
   phoneNumber: String
   fullAddress: String
-  userId: Int!
+  userId: User
 }
 
 type Query {
@@ -50,6 +50,7 @@ type Query {
 
   Profile(id: Int!): Profile
   allProfiles: [Profile]
+  getProfileByUserId(userId: Int!): Profile
 }
 
 type Mutation {

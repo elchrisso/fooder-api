@@ -18,6 +18,16 @@ export default {
         //logger.error(err)
         throw err
       }
+    },
+
+    async User (_doc, args, _context, _info) {
+      try {
+        const user = await User.findById(args.id)
+        return (user) ? user.get({ plain: true }) : null
+      } catch (err) {
+        //logger.error(err)
+        throw err
+      }
     }
   },
 
@@ -65,9 +75,8 @@ export default {
   User: {
     async profile (user) {
       try {
-        let user = await User.findById(args.id)
-        user = await user.update(args)
-        return (user) ? user.get({ plain: true }) : null
+        let profile = await Profile.findOne({ where: { userId: user.id }})
+        return (profile) ? profile.get({ plain: true }) : null
       } catch (err) {
         //logger.error(err)
         throw err
