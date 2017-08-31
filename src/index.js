@@ -19,7 +19,7 @@ const schema = makeExecutableSchema({
 app.use(cors())
 app.use('/graphql', bodyParser.json(), graphqlExpress((req) => ({
   schema,
-  context: { someFutureAuth: 'someFutureToken' }
+  context: { token: req.headers.authorization }
   })
 ))
 app.use('/graphiql', graphiqlExpress({

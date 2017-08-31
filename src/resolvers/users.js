@@ -1,11 +1,11 @@
 import User from '../db/models/user'
 import Profile from '../db/models/profile'
-//import logger from '../logger'
+// import logger from '../logger'
 import hash from 'password-hash'
 import jwt from 'jsonwebtoken'
 
-import { salt } from '../../secrets'
-import { isLoggedIn } from '../../utils'
+import { salt } from '../secrets'
+import { isLoggedIn } from '../utils'
 
 export default {
   Query: {
@@ -33,11 +33,13 @@ export default {
 
     async loggedInUser (_doc, _args, context, _info) {
       try {
-        const token = isLoggedIn(context.token)
+        console.log(context.token)
+        const token = await isLoggedIn(context.token)
+        console.log('made it', token)
         const user = await User.findById(token.data.id)
         return user.get({ plain: true })
       } catch (err) {
-        //logger.error(err)
+        console.log(err)
         throw err
       }
     }
