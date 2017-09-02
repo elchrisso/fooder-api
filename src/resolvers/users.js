@@ -77,8 +77,18 @@ export default {
 
     async createUser (_doc, args, _context, _info) {
       try {
-        const user = await User.create(args)
-        return (user) ? user.get({ plain: true }) : null
+        const newUser = await User.create(args)
+        console.log(typeof args)
+
+        if (args.profile !== null || args.profile !== undefined) {
+          const newUserId = newUser.get('id')
+
+          const newProfile = await Profile.create({
+              ...args.profile,
+            userId: newUserId
+          })
+        }
+        return newUser.get({ plain: true })
       } catch (err) {
         //logger.error(err)
         throw err

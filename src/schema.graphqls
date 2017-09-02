@@ -36,7 +36,11 @@ type Profile {
   fullName: String!
   phoneNumber: String
   fullAddress: String
-  userId: User
+  userId: User!
+}
+
+input ProfileInput {
+  fullName: String!
 }
 
 type Query {
@@ -58,9 +62,9 @@ type Mutation {
   createFood(name: String!, description: String!): Food
   updateFood(id: Int!, name: String, description: String): Food
   createRecipe(name: String!, description: String!, cookTime: Int!, foodIds: [Int!]!): Recipe
-  updateRecipe(id: String!, name: String, description: String, cookTime: Int): Recipe
+  updateRecipe(id: Int!, name: String, description: String, cookTime: Int): Recipe
 
-  createUser(email: String!, password: String!): User
+  createUser(email: String!, password: String!, profile: ProfileInput!): User
   loginUser(email: String!, password: String!): Token
   updateUser(id: Int!, email: String, password: String): User
   createProfile(fullName: String!, fullAddress: String, phoneNumber: String, userId: Int!): Profile
