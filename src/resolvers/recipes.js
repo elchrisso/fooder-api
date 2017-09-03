@@ -51,8 +51,8 @@ export default {
 
     async updateRecipe (_doc, args, _context, _info) {
       try {
-        const food = await Food.update(args)
-        return food.get({ plain: true })
+        const recipe = await Recipe.update(args, {where: {id: args.id}})
+        return recipe.get({ plain: true })
       } catch (err) {
         //logger.error(err)
         throw err

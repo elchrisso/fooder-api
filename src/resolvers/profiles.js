@@ -40,7 +40,17 @@ export default {
     async createProfile (_doc, args, _context, _info) {
       try {
         const profile = await Profile.create(args)
-        return (profile) ? profile.get({ plain: true}) : null
+        return (profile) ? profile.get({plain: true}) : null
+      } catch (err) {
+        //logger.error(err)
+        throw err
+      }
+    },
+
+    async updateProfile (_doc, args, _context, _info) {
+      try {
+        const profile = await Profile.update(args, {where: { id: args.id }})
+        return profile.get({ plain: true })
       } catch (err) {
         //logger.error(err)
         throw err
