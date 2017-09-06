@@ -1,5 +1,6 @@
 import User from '../db/models/user'
 import Profile from '../db/models/profile'
+import Recipe from '../db/models/recipe'
 // import logger from '../logger'
 import hash from 'password-hash'
 import jwt from 'jsonwebtoken'
@@ -23,7 +24,9 @@ export default {
 
     async User (_doc, args, _context, _info) {
       try {
-        const user = await User.findById(args.id)
+        const user = await User.findById(args.id, { include: [
+          {model: Recipe, as: 'recipes'}
+        ]})
         return (user) ? user.get({ plain: true }) : null
       } catch (err) {
         //logger.error(err)

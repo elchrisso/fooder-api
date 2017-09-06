@@ -14,6 +14,7 @@ export default db.define(
     updatedAt: DataTypes.DATE,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    cookTime: DataTypes.INTEGER
+    cookTime: DataTypes.INTEGER,
+    createdByUserId: DataTypes.INTEGER
   }
 )

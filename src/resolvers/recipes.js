@@ -1,5 +1,6 @@
 import Recipe from '../db/models/recipe'
 import Food from '../db/models/food'
+import User from '../db/models/user'
 
 export default {
   Query: {
@@ -15,7 +16,9 @@ export default {
 
     async Recipe (_doc, args, _context, _info) {
       try {
-        const recipe = await Recipe.findById(args.id, { include: [{model: Food, as: 'Foods', through: 'foods_recipes'}] })
+        const recipe = await Recipe.findById(args.id, { include: [
+          {model: Food, as: 'Foods', through: 'foods_recipes'},
+          {model: User, as: 'userId'}] })
         return recipe.get({ plain: true })
       } catch (err) {
         //logger.error(err)

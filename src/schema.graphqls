@@ -15,6 +15,7 @@ type Recipe {
   description: String!
   cookTime: Int!
   Foods: [Food!]!
+  userId: User
 }
 
 type User {
@@ -23,6 +24,7 @@ type User {
   updatedAt: String!
   email: String!
   profile: Profile
+  recipes: [Recipe]
 }
 
 type Token {
@@ -61,7 +63,7 @@ type Query {
 type Mutation {
   createFood(name: String!, description: String!): Food
   updateFood(id: Int!, name: String, description: String): Food
-  createRecipe(name: String!, description: String!, cookTime: Int!, foodIds: [Int!]!): Recipe
+  createRecipe(name: String! description: String!, cookTime: Int!, foodIds: [Int!]!, userId: Int!): Recipe
   updateRecipe(id: Int!, name: String, description: String, cookTime: Int): Recipe
 
   createUser(email: String!, password: String!, profile: ProfileInput!): User
