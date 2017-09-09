@@ -15,7 +15,8 @@ type Recipe {
   description: String!
   cookTime: Int!
   Foods: [Food!]!
-  userId: User
+  User: User
+  createdByUserId: Int
 }
 
 type User {
@@ -63,7 +64,7 @@ type Query {
 type Mutation {
   createFood(name: String!, description: String!): Food
   updateFood(id: Int!, name: String, description: String): Food
-  createRecipe(name: String! description: String!, cookTime: Int!, foodIds: [Int!]!, userId: Int!): Recipe
+  createRecipe(name: String! description: String!, cookTime: Int!, foodIds: [Int!]!, createdByUserId: Int!): Recipe
   updateRecipe(id: Int!, name: String, description: String, cookTime: Int): Recipe
 
   createUser(email: String!, password: String!, profile: ProfileInput!): User

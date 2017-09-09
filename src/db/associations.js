@@ -18,4 +18,4 @@ Recipe.belongsToMany(Food, {
 //Profile.belongsTo(User, { foreignKey: 'userId'})
 
 User.hasMany(Recipe, { foreignKey: 'createdByUserId', as: 'recipes' })
-Recipe.belongsTo(User, { foreignKey: 'createdByUserId', as: 'userId' })
+Recipe.belongsTo(User, { foreignKey: 'createdByUserId', as: 'User' })

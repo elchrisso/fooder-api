@@ -6,7 +6,11 @@ export default {
   Query: {
     async allRecipes (_doc, _args, _context, _info) {
       try {
-        const recipes = await Recipe.findAll()
+        const recipes = await Recipe.findAll({
+          include: [
+            {model: User, as: 'User', foreignKey: 'createdByUserId'}
+          ]
+        })
         return recipes.map((recipe) => recipe.get({ plain: true }))
       } catch (err) {
         //logger.error(err)
@@ -18,7 +22,7 @@ export default {
       try {
         const recipe = await Recipe.findById(args.id, { include: [
           {model: Food, as: 'Foods', through: 'foods_recipes'},
-          {model: User, as: 'userId'}] })
+          {model: User, as: 'User', foreignKey: 'createdByUserId'}] })
         return recipe.get({ plain: true })
       } catch (err) {
         //logger.error(err)
