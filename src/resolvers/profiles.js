@@ -49,7 +49,7 @@ export default {
 
     async updateProfile (_doc, args, _context, _info) {
       try {
-        const profile = await Profile.update(args, {where: { id: args.id }})
+        const profile = await Profile.update(args, {where: { userId: args.userId }})
         return profile.get({ plain: true })
       } catch (err) {
         //logger.error(err)

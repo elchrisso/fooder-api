@@ -69,8 +69,7 @@ type Mutation {
 
   createUser(email: String!, password: String!, profile: ProfileInput!): User
   loginUser(email: String!, password: String!): Token
-  updateUser(id: Int!, email: String, password: String): User
   createProfile(fullName: String!, fullAddress: String, phoneNumber: String, userId: Int!): Profile
-  updateProfile(id: Int!, fullName: String, fullAddress: String, phoneNumber: String): Profile
+  updateProfile(userId: Int!, fullName: String, fullAddress: String, phoneNumber: String): Profile
 
 }
