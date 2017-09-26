@@ -49,7 +49,10 @@ export default {
 
     async updateProfile (_doc, args, _context, _info) {
       try {
-        const profile = await Profile.update(args, {where: { userId: args.userId }})
+        let profile = await Profile.find({where: { userId: args.userId }})
+        profile = await Profile.update(args, {where: { userId: args.userId }})
+        //this line of code should not be necessary?  workaround to "profile.get is not a function" error
+        profile = await Profile.find({where: { userId: args.userId }})
         return profile.get({ plain: true })
       } catch (err) {
         //logger.error(err)
