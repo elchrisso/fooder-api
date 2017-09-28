@@ -56,11 +56,6 @@ export default {
             email: args.email
         }})
 
-        if (!foundUser) {
-          console.log("User not found!")
-          return { token: null }
-        }
-
         foundUser = foundUser.get({ plain: true })
         console.log(foundUser)
 
