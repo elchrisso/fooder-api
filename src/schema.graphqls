@@ -51,6 +51,7 @@ type Query {
   allFoods: [Food]
   Recipe(id: Int!): Recipe
   allRecipes: [Recipe]
+  getRecipesByUserId(id: Int!): [Recipe]
 
   User(id: Int!): User
   allUsers: [User]

@@ -28,6 +28,16 @@ export default {
         //logger.error(err)
         throw err
       }
+    },
+
+    async getRecipesByUserId(_doc, args, _context, _info) {
+      try {
+        const recipes = await Recipe.findAll({where: { createdByUserId: args.id }})
+        return recipes.map((recipe) => recipe.get({ plain: true }))
+      } catch (err) {
+        //logger.err
+        throw err
+      }
     }
   },
 
