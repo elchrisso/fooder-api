@@ -42,6 +42,15 @@ type Profile {
   userId: User!
 }
 
+type FeedItem {
+  id: Int!
+  createdAt: String!
+  updatedAt: String!
+  userId: String!
+  title: String!
+  description: String!
+}
+
 input ProfileInput {
   fullName: String!
 }
@@ -60,6 +69,8 @@ type Query {
   Profile(id: Int!): Profile
   allProfiles: [Profile]
   getProfileByUserId(userId: Int!): Profile
+
+  allFeedItems: [FeedItem]
 }
 
 type Mutation {
@@ -70,7 +81,9 @@ type Mutation {
 
   createUser(email: String!, password: String!, profile: ProfileInput!): User
   loginUser(email: String!, password: String!): Token
+
   createProfile(fullName: String!, fullAddress: String, phoneNumber: String, userId: Int!): Profile
   updateProfile(userId: Int!, fullName: String, fullAddress: String, phoneNumber: String): Profile
 
+  createFeedItem(userId: String!, title: String!, description: String!): FeedItem
 }
